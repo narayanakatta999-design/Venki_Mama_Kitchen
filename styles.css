@@ -1,0 +1,27 @@
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;color:#111}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;position:sticky;top:0;background:#fff;border-bottom:1px solid #eee}
+.logo{font-weight:800;text-decoration:none;color:#111}
+.nav-links{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+.nav a{text-decoration:none;color:#111}
+.hero{position:relative;display:grid;min-height:55vh}
+.hero img{width:100%;height:55vh;object-fit:cover;filter:brightness(.65)}
+.hero-text{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;gap:.75rem;padding:1rem}
+.btn{background:#eab308;color:#111;padding:.75rem 1rem;border-radius:.5rem;text-decoration:none;font-weight:800;display:inline-block}
+.btn-outline{border:2px solid #eab308;color:#eab308;padding:.6rem .9rem;border-radius:.5rem;text-decoration:none;font-weight:700;display:inline-block}
+.section{padding:3rem 1.25rem;max-width:1100px;margin:0 auto}
+.section-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap}
+.chip{border:1px solid #ddd;border-radius:999px;padding:.4rem .8rem;background:#fff;cursor:pointer}
+.chip.is-active,.chip:hover{background:#111827;color:#fff;border-color:#111827}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem}
+.menu-card{border:1px solid #eee;border-radius:.75rem;overflow:hidden;background:#fff;display:grid;grid-template-rows:160px 1fr}
+.menu-img{width:100%;height:100%;object-fit:cover}
+.menu-body{padding:.85rem;display:grid;gap:.5rem}
+.menu-row{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.menu-title{font-size:1.05rem}.menu-price{font-weight:800}.menu-desc{color:#555;margin:0}.menu-meta{font-size:.85rem;color:#666}
+.location-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;align-items:start}
+.map-wrap iframe{width:100%;border:0;border-radius:.75rem;min-height:340px}
+.contact-form{display:grid;gap:.75rem;max-width:720px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+label{display:grid;gap:.35rem;font-weight:600}input,textarea{border:1px solid #ccc;padding:.65rem .7rem;border-radius:.5rem;font:inherit}
+.site-footer{text-align:center;padding:2rem 1.25rem;color:#666;border-top:1px solid #eee}
+@media(max-width:800px){.location-layout{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}

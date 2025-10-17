@@ -1,0 +1,7 @@
+// basic interactivity (same as scaffold shortened)
+document.querySelectorAll('[data-link]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href');const el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}})});
+document.getElementById('year').textContent=new Date().getFullYear();
+async function loadMenu(){try{const res=await fetch('menu.json',{cache:'no-store'});const items=await res.json();renderMenu(items);initFilters(items);}catch(e){document.getElementById('menu-list').innerHTML='<p>Could not load menu.</p>'}};
+function renderMenu(items){const list=document.getElementById('menu-list');const tpl=document.getElementById('menu-card-template');list.textContent='';items.forEach(it=>{const node=tpl.content.cloneNode(true);const img=node.querySelector('.menu-img');img.src=it.image||'assets/placeholder.jpg';img.alt=it.name;node.querySelector('.menu-title').textContent=it.name;node.querySelector('.menu-price').textContent=`₹${Number(it.price).toFixed(2)}`;node.querySelector('.menu-desc').textContent=it.description||'';node.querySelector('.menu-tag').textContent=it.category;list.appendChild(node);});}
+function initFilters(items){document.querySelectorAll('.chip').forEach(chip=>{chip.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(c=>c.classList.remove('is-active'));chip.classList.add('is-active');const f=chip.dataset.filter;renderMenu(f==='all'?items:items.filter(i=>i.filterGroup===f));});});}
+loadMenu();

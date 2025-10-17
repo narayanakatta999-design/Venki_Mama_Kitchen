@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VENKI MAMA KITCHEN</title>
+    <link rel="icon" href="assets/favicon.png">
+    <meta name="description" content="Authentic Andhra-style meals, tiffins, snacks, pulaos and biryanis. Dine-in, takeaway & catering.">
+    <link rel="stylesheet" href="styles.css">
+
+    <meta property="og:title" content="VENKI MAMA KITCHEN">
+    <meta property="og:description" content="Andhra Meals · Tiffins · Snacks · Biryanis · Catering">
+    <meta property="og:image" content="assets/hero.jpg">
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+    <header class="site-header" id="home">
+        <nav class="nav">
+            <a href="#home" class="logo">VENKI MAMA KITCHEN</a>
+            <!-- <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button> -->
+            <ul class="nav-links">
+                <li><a href="#menu" data-link>Menu</a></li>
+                <li><a href="#location" data-link>Location</a></li>
+                <li><a href="#contact" data-link>Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <picture>
+                <img src="assets/logo.jpeg" alt="VENKI MAMA KITCHEN storefront and dishes" loading="lazy" decoding="async">
+            </picture>
+            <!-- <div class="hero-text">
+                <h1>VENKI MAMA KITCHEN</h1>
+                <p>Andhra Meals · Tiffins · Snacks · Biryanis</p>
+                <div class="cta-row">
+                    <a class="btn" href="#menu">See Menu</a>
+                    <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Sriram+Nagar+Colony,+Near+Ramki+One+Marvel,+Gajularamaram,+Hyderabad+500055">Get
+            Directions</a>
+                </div>
+            </div> -->
+        </div>
+    </header>
+
+    <main>
+        <section id="menu" class="section">
+            <div class="section-header">
+                <h2>Menu</h2>
+                <div class="filters" role="group" aria-label="Filter menu by category">
+                    <button class="chip is-active" data-filter="all">All</button>
+                    <button class="chip" data-filter="starters">Starters</button>
+                    <button class="chip" data-filter="mains">Mains</button>
+                    <button class="chip" data-filter="biryani">Biryanis</button>
+                    <button class="chip" data-filter="snacks">Snacks</button>
+                    <button class="chip" data-filter="breads">Rotis</button>
+                    <button class="chip" data-filter="specials">Specials</button>
+                </div>
+            </div>
+            <div class="note">Prices in INR. Availability may vary daily.</div>
+            <div id="menu-list" class="menu-grid" aria-live="polite"></div>
+            <template id="menu-card-template">
+        <article class="menu-card">
+          <img class="menu-img" alt="" loading="lazy" decoding="async">
+          <div class="menu-body">
+            <div class="menu-row">
+              <h3 class="menu-title"></h3>
+              <span class="menu-price"></span>
+            </div>
+            <p class="menu-desc"></p>
+            <div class="menu-meta">
+              <span class="menu-tag"></span>
+            </div>
+          </div>
+        </article>
+      </template>
+        </section>
+
+        <section id="location" class="section">
+            <h2>Location & Hours</h2>
+            <div class="location-layout">
+                <div class="map-wrap">
+                    <iframe title="Map to VENKI MAMA KITCHEN" src="https://www.google.com/maps?q=Sriram+Nagar+Colony,+Near+Ramki+One+Marvel,+Gajularamaram,+Hyderabad+500055&output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="hours">
+                    <ul>
+                        <li><strong>Mon–Fri</strong>: 11:00 AM – 11:30 PM</li>
+                        <li><strong>Sat-Sun</strong>: 7:00 AM – 11:30 PM</li>
+                    </ul>
+                    <p><strong>Address:</strong> Sriram Nagar Colony, Near Ramki One Marvel, Gajularamaram, Hyderabad – 500055</p>
+                    <p><strong>Phone:</strong> <a href="tel:+918143991636">81439 91636</a>, <a href="tel:+919705898963">97058
+              98963</a></p>
+                    <p><strong>Catering:</strong> Veg & Non-Veg Catering Available</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="contact" class="section">
+            <h2>Contact</h2>
+            <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/your-id">
+                <div class="grid-2">
+                    <label> Name
+            <input name="name" type="text" required aria-required="true" placeholder="Your name">
+          </label>
+                    <label> Email
+            <input name="email" type="email" required aria-required="true" placeholder="you@example.com">
+          </label>
+                </div>
+                <label> Subject
+          <input name="subject" type="text" placeholder="Reservation, catering, etc.">
+        </label>
+                <label> Message
+          <textarea name="message" rows="5" required aria-required="true" placeholder="How can we help?"></textarea>
+        </label>
+                <button class="btn" type="submit">Send</button>
+                <p class="form-status" role="status" aria-live="polite"></p>
+            </form>
+            <div class="contact-cta">
+                <a class="btn-outline" href="tel:+918143991636">Call 81439 91636</a>
+                <a class="btn-outline" href="tel:+919705898963">Call 97058 98963</a>
+                <a class="btn-outline" target="_blank" rel="noopener" href="https://wa.me/918143991636">WhatsApp</a>
+                <a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Sriram+Nagar+Colony+Near+Ramki+One+Marvel+Gajularamaram+Hyderabad+500055">Get
+          Directions</a>
+            </div>
+        </section> -->
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> VENKI MAMA KITCHEN · Andhra Meals • Tiffins • Snacks • Biryanis</p>
+    </footer>
+</body>
+
+</html>
