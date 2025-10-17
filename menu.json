@@ -4,90 +4,90 @@
     "price": 90,
     "category": "South Indian Meals",
     "filterGroup": "mains",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/single-meals.jpg"
   },
   {
     "name": "Full Meals",
     "price": 140,
     "category": "South Indian Meals",
     "filterGroup": "mains",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/single-meals.jpg"
   },
   {
     "name": "Gobi Manchurian",
     "price": 99,
     "category": "Veg Starters",
     "filterGroup": "starters",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/gobi-manchurian.jpg"
   },
   {
     "name": "Paneer Manchurian",
     "price": 129,
     "category": "Veg Starters",
     "filterGroup": "starters",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/paneer-manchurian.jpg"
   },
   {
     "name": "Chicken 65",
     "price": 149,
     "category": "Non-Veg Starters",
     "filterGroup": "starters",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/chicken65.jpg"
   },
   {
     "name": "Mutton Dry Fry",
     "price": 199,
     "category": "Non-Veg Starters",
     "filterGroup": "starters",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/muttonfry.jpeg"
   },
   {
     "name": "Veg Biryani (Single)",
     "price": 119,
     "category": "Veg Biryanis",
     "filterGroup": "biryani",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/veg-biryani.jpg"
   },
   {
     "name": "Veg Biryani (Full)",
     "price": 169,
     "category": "Veg Biryanis",
     "filterGroup": "biryani",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/veg-biryani.jpg"
   },
   {
     "name": "Chicken Dum Biryani (Single)",
     "price": 129,
     "category": "Non-Veg Biryanis",
     "filterGroup": "biryani",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/chicken-dum-biryani.jpg"
   },
   {
     "name": "Chicken Dum Biryani (Full)",
     "price": 189,
     "category": "Non-Veg Biryanis",
     "filterGroup": "biryani",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/chicken-dum-biryani.jpg"
   },
   {
     "name": "Phulka",
     "price": 10,
     "category": "Rotis",
     "filterGroup": "breads",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/pulka.jpg"
   },
   {
     "name": "Chapati",
     "price": 20,
     "category": "Rotis",
     "filterGroup": "breads",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/Chapati.jpg"
   },
   {
     "name": "Ragi Sankati - Natukodi",
     "price": 229,
     "category": "Venki Mama Special",
     "filterGroup": "specials",
-    "image": "assets/placeholder.jpg"
+    "image": "assets/ragi-sangati-natu-kodi.jpg"
   }
 ]
