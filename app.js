@@ -60,6 +60,10 @@ function renderMenu(items) {
   const list = document.getElementById("menu-list");
   const tpl = document.getElementById("menu-card-template");
   list.textContent = "";
+  // adjust grid behavior when very few items
+  list.classList.remove("count-1", "count-2");
+  if (items.length === 1) list.classList.add("count-1");
+  else if (items.length === 2) list.classList.add("count-2");
   items.forEach((it) => {
     const node = tpl.content.cloneNode(true);
     const img = node.querySelector(".menu-img");
@@ -90,3 +94,42 @@ function initFilters(items) {
   });
 }
 loadMenu();
+
+// Full-menu image viewer: loads pages (e.g. assets/menu_page1.jpg, assets/menu_page2.jpg)
+const viewFullBtn = document.getElementById("view-full-menu");
+const fullMenuWrap = document.getElementById("full-menu");
+const fullMenuList = document.getElementById("full-menu-list");
+const closeFullBtn = document.getElementById("close-full-menu");
+
+function showFullMenu(pages) {
+  if (!fullMenuWrap || !fullMenuList) return;
+  fullMenuList.innerHTML = "";
+  pages.forEach((src) => {
+    const img = document.createElement("img");
+    img.src = src.trim();
+    img.className = "full-menu-img";
+    img.loading = "lazy";
+    img.alt = "Menu page";
+    fullMenuList.appendChild(img);
+  });
+  fullMenuWrap.hidden = false;
+  fullMenuWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+if (viewFullBtn) {
+  viewFullBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const pages = viewFullBtn.dataset.pages
+      ? viewFullBtn.dataset.pages.split(",")
+      : ["assets/menu_page1.jpg", "assets/menu_page2.jpg"];
+    showFullMenu(pages);
+  });
+}
+
+if (closeFullBtn) {
+  closeFullBtn.addEventListener("click", () => {
+    if (fullMenuWrap) fullMenuWrap.hidden = true;
+    if (fullMenuList) fullMenuList.innerHTML = "";
+    viewFullBtn && viewFullBtn.focus();
+  });
+}

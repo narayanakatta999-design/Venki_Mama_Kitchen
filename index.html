@@ -47,19 +47,33 @@
     <main>
         <section id="menu" class="section">
             <div class="section-header">
-                <h2>Menu</h2>
+                <h2>Menu Highlights</h2>
                 <div class="filters" role="group" aria-label="Filter menu by category">
                     <button class="chip is-active" data-filter="all">All</button>
                     <button class="chip" data-filter="starters">Starters</button>
                     <button class="chip" data-filter="mains">Mains</button>
                     <button class="chip" data-filter="biryani">Biryanis</button>
+                    <button class="chip" data-filter="pulaos">Pulaos</button>
                     <button class="chip" data-filter="snacks">Snacks</button>
                     <button class="chip" data-filter="breads">Rotis</button>
                     <button class="chip" data-filter="specials">Specials</button>
                 </div>
+                <!-- Full menu viewer: clicking loads images from assets/menu_page1.jpg and assets/menu_page2.jpg -->
+                <div class="menu-actions">
+                    <button id="view-full-menu" class="btn"
+                        data-pages="assets/menu_page_1.jpg,assets/menu_page_2.jpg">View Full Menu</button>
+                </div>
             </div>
             <div class="note">Note: Prices in INR. Availability may vary daily.</div>
             <div id="menu-list" class="menu-grid" aria-live="polite"></div>
+            <!-- Image-based full menu viewer (populated by app.js) -->
+            <div id="full-menu" class="pdf-wrap" hidden>
+                <div class="full-menu-header">
+                    <h3>Full Menu</h3>
+                    <button id="close-full-menu" class="btn-outline">Hide</button>
+                </div>
+                <div id="full-menu-list" class="full-menu-list" aria-live="polite"></div>
+            </div>
             <template id="menu-card-template">
                 <article class="menu-card">
                     <img class="menu-img" alt="" loading="lazy" decoding="async">
