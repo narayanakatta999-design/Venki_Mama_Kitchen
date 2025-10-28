@@ -69,6 +69,56 @@
     "filterGroup": "biryani",
     "image": "assets/chicken-dum-biryani.jpg"
   },
+
+  {
+    "name": "Kodi Vepudu Pulao",
+    "price": 149,
+    "category": "Pulaos",
+    "filterGroup": "pulaos",
+    "image": "assets/kodi_vepudu_pulao.jpg"
+  },
+  {
+    "name": "Royyala Vepudu Pulao",
+    "price": 189,
+    "category": "Pulaos",
+    "filterGroup": "pulaos",
+    "image": "assets/prawn_fry_Pulao.jpg"
+  },
+  {
+    "name": "Mutton Vepudu Pulao",
+    "price": 279,
+    "category": "Pulaos",
+    "filterGroup": "pulaos",
+    "image": "assets/mutton_fry_pulao.jpg"
+  },
+  {
+    "name": "Tomato Bajji",
+    "price": 40,
+    "category": "Snacks",
+    "filterGroup": "snacks",
+    "image": "assets/tomato_bajji.jpg"
+  },
+  {
+    "name": "Vankay Bajji",
+    "price": 40,
+    "category": "Snacks",
+    "filterGroup": "snacks",
+    "image": "assets/vankay_bajji.jpeg"
+  },
+  {
+    "name": "Muntha masala",
+    "price": 40,
+    "category": "Snacks",
+    "filterGroup": "snacks",
+    "image": "assets/muntha_masala.jpg"
+  },
+  {
+    "name": "Challa Punugulu",
+    "price": 40,
+    "category": "Snacks",
+    "filterGroup": "snacks",
+    "image": "assets/challa_punugulu.jpg"
+  },
   {
     "name": "Phulka",
     "price": 10,
