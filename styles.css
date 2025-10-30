@@ -23,17 +23,24 @@ body {
   /* fixed to viewport */
   top: 0;
   left: 0;
-  right: 0;
   height: var(--nav-height);
   background: #fff;
   border-bottom: 1px solid #eee;
   z-index: 9999;
+  width: 100%;
 }
 
 .logo {
   font-weight: 800;
   text-decoration: none;
   color: #111;
+  margin-right: auto;
+}
+
+/* hide mobile nav toggle on desktop by default */
+
+.nav-toggle {
+  display: none;
 }
 
 /* Tab-style navigation */
@@ -47,6 +54,307 @@ body {
   background: transparent;
   border-bottom: 1px solid #e6e6e6;
   border-radius: 0.6rem;
+}
+
+/* ensure nav links sit to the right on desktop */
+
+/* (no extra margin on .nav-links; logo handles spacing) */
+
+/* Mobile navigation styles */
+
+@media (max-width: 800px) {
+  .nav {
+    height: var(--nav-height);
+    padding: 0 1rem;
+  }
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    font-size: 1.35rem;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--nav-height);
+    background: #fff;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  }
+  .nav.is-open .nav-links {
+    display: flex;
+  }
+  .nav-links a {
+    padding: 0.6rem 0;
+  }
+  .nav-links li {
+    width: 100%;
+  }
+  .nav-links a {
+    border-radius: 0;
+  }
+  /* Make nav links larger touch targets */
+  .nav-links a {
+    font-weight: 700;
+    padding: 0.8rem 0;
+  }
+  /* increase carousel controls for touch */
+  .carousel-button {
+    padding: 0.8rem 1rem;
+    font-size: 1.6rem;
+  }
+  .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+  }
+  /* full-menu actions larger */
+  .menu-actions .btn {
+    padding: 0.9rem 1rem;
+  }
+  .pdf-wrap .btn-outline {
+    padding: 0.6rem 0.9rem;
+  }
+}
+
+/* Ensure menu cards stack nicely on small screens */
+
+@media (max-width: 600px) {
+  .hero img {
+    height: auto;
+    max-height: 46vh;
+    object-fit: contain;
+    object-position: center;
+  }
+  .menu-title {
+    font-size: 1.05rem;
+  }
+  .menu-price {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile carousel & hero adjustments */
+
+@media (max-width: 800px) {
+  .carousel-slide img {
+    height: 40vh;
+  }
+  .hero img {
+    height: 36vh;
+    object-position: center;
+  }
+  /* hide the hero image on small screens and show animated fallback */
+  .hero > img {
+    display: none;
+  }
+  .hero-mobile {
+    display: block;
+  }
+}
+
+/* Mobile animated hero fallback styles */
+
+.hero-mobile {
+  display: none;
+  /* shown only on small screens via media query above */
+  position: relative;
+  width: 100%;
+  min-height: 36vh;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-mobile-bg {
+  position: absolute;
+  inset: 0;
+  /* use a food image from assets as the mobile hero background */
+  background-image: url("assets/logi-mobile-hero-1200x800.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* slight pan/zoom for a gentle Ken Burns effect */
+  transform: scale(1.03);
+  animation: bgPan 12s ease-in-out infinite;
+  filter: brightness(0.76) saturate(1.05);
+}
+
+.hero-mobile-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand-line {
+  display: block;
+  font-size: clamp(1.6rem, 6vw, 3.2rem);
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(10px) scale(0.985);
+  animation: brandTextIn 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  /* gradient text with clipping so it picks up the colorful bg */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.92) 50%,
+    rgba(255, 255, 255, 0.98) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* depth */
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.28), 0 2px 0 rgba(255, 255, 255, 0.04);
+  display: inline-block;
+  transform-origin: center;
+}
+
+.brand-line.brand-strong {
+  /* stronger middle line with subtle warm highlight */
+  background: linear-gradient(90deg, #fffefc 0%, #ffeaa6 40%, #fffefc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 10px 36px rgba(0, 0, 0, 0.34),
+    0 2px 0 rgba(255, 255, 255, 0.06);
+  transform: translateZ(0);
+}
+
+/* staggered entrance for up to 4 lines */
+
+.brand-line:nth-child(1) {
+  animation-delay: 0.08s;
+}
+
+.brand-line:nth-child(2) {
+  animation-delay: 0.28s;
+}
+
+.brand-line:nth-child(3) {
+  animation-delay: 0.48s;
+}
+
+.brand-line:nth-child(4) {
+  animation-delay: 0.68s;
+}
+
+/* small hover/press 'lift' for interactivity on mobile tap */
+
+.hero-mobile:active .brand-line,
+.hero-mobile:focus-within .brand-line {
+  transform: translateY(0) scale(1.02);
+}
+
+@keyframes brandTextIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.01);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: none;
+  }
+}
+
+/* Respect reduced motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-line,
+  .hero-mobile-bg,
+  .hero-mobile::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .brand-line {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* subtle shimmer overlay */
+
+.hero-mobile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.6;
+  transform: translateX(-40%);
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes bgShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes bgPan {
+  0% {
+    transform: scale(1.03) translateY(0);
+  }
+  50% {
+    transform: scale(1.06) translateY(-3%);
+  }
+  100% {
+    transform: scale(1.03) translateY(0);
+  }
+}
+
+@keyframes textIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
 }
 
 .nav-links li {
@@ -124,7 +432,6 @@ body {
   place-items: center;
   text-align: center;
   color: #fff;
-  gap: 0.75rem;
   padding: 1rem;
 }
 
@@ -432,6 +739,43 @@ textarea {
   padding: 2rem 1.25rem;
   color: #666;
   border-top: 1px solid #eee;
+}
+
+/* Contact call-to-action buttons layout */
+
+.contact-cta {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.contact-cta a,
+.contact-cta .btn,
+.contact-cta .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.55rem 0.9rem;
+  min-width: 140px;
+  flex: 1 1 auto;
+}
+
+@media (max-width: 600px) {
+  .contact-cta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .contact-cta a,
+  .contact-cta .btn,
+  .contact-cta .btn-outline {
+    width: 100%;
+    flex: none;
+    min-width: 0;
+  }
 }
 
 .note {
