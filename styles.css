@@ -182,9 +182,9 @@ body {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  /* slight pan/zoom for a gentle Ken Burns effect */
-  transform: scale(1.03);
-  animation: bgPan 12s ease-in-out infinite;
+  /* gentle background-position pan (avoids scaling which can cause scroll on some mobile browsers) */
+  transform: none;
+  animation: bgPos 12s ease-in-out infinite;
   filter: brightness(0.76) saturate(1.05);
 }
 
@@ -329,15 +329,15 @@ body {
   }
 }
 
-@keyframes bgPan {
+@keyframes bgPos {
   0% {
-    transform: scale(1.03) translateY(0);
+    background-position: center 10%;
   }
   50% {
-    transform: scale(1.06) translateY(-3%);
+    background-position: center 40%;
   }
   100% {
-    transform: scale(1.03) translateY(0);
+    background-position: center 10%;
   }
 }
 
@@ -794,5 +794,23 @@ textarea {
   }
   :root {
     --nav-height: 56px;
+  }
+  /* Defensive: prevent any horizontal scroll on small viewports caused by transforms or oversized elements */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  .hero,
+  .hero-mobile,
+  .hero-mobile-bg {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  /* Ensure pseudo elements cannot overflow */
+  .hero-mobile::after,
+  .hero-mobile-bg {
+    will-change: background-position, transform;
+    backface-visibility: hidden;
   }
 }
