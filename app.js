@@ -101,6 +101,61 @@ const fullMenuWrap = document.getElementById("full-menu");
 const fullMenuList = document.getElementById("full-menu-list");
 const closeFullBtn = document.getElementById("close-full-menu");
 
+// Mobile nav toggle
+(function () {
+  const nav = document.querySelector(".nav");
+  const toggle = document.getElementById("nav-toggle");
+  if (!nav || !toggle) return;
+  toggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  // close nav when link clicked
+  document.querySelectorAll(".nav-links [data-link]").forEach((a) =>
+    a.addEventListener("click", () => {
+      if (nav.classList.contains("is-open")) {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    })
+  );
+  // close on resize to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 800 && nav.classList.contains("is-open")) {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+})();
+
+/* Mobile hero display fallback: ensure the animated text hero replaces the <picture> on narrow viewports
+   This helps in edge cases where CSS rules aren't applied or when you want a JS-driven swap. */
+(function mobileHeroFallback() {
+  if (typeof window === "undefined") return;
+  const mq = window.matchMedia("(max-width:800px)");
+  // select either a <picture> (if present) or the fallback <img> inside .hero
+  const picture = document.querySelector(".hero picture, .hero img");
+  const mobile = document.querySelector(".hero-mobile");
+  if (!picture || !mobile) return;
+  function update() {
+    if (mq.matches) {
+      picture.style.display = "none";
+      mobile.style.display = "block";
+      mobile.setAttribute("aria-hidden", "false");
+      picture.setAttribute("aria-hidden", "true");
+    } else {
+      picture.style.display = "";
+      mobile.style.display = "none";
+      mobile.setAttribute("aria-hidden", "true");
+      picture.setAttribute("aria-hidden", "false");
+    }
+  }
+  // run once and keep in sync with viewport changes
+  update();
+  if (typeof mq.addEventListener === "function") mq.addEventListener("change", update);
+  else if (typeof mq.addListener === "function") mq.addListener(update);
+})();
+
 function showFullMenu(pages) {
   if (!fullMenuWrap || !fullMenuList) return;
   fullMenuList.innerHTML = "";
@@ -133,3 +188,95 @@ if (closeFullBtn) {
     viewFullBtn && viewFullBtn.focus();
   });
 }
+
+/* Hero carousel functionality (init after DOM) */
+(function () {
+  const carousel = document.getElementById("hero-carousel");
+  if (!carousel) return;
+  const track = carousel.querySelector(".carousel-track");
+  const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+  const prev = carousel.querySelector(".carousel-button.prev");
+  const next = carousel.querySelector(".carousel-button.next");
+  const indicatorsWrap = carousel.querySelector(".carousel-indicators");
+  let current = 0;
+  let autoplayId = null;
+  const AUTOPLAY_MS = 4000;
+
+  slides.forEach((s, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.setAttribute("aria-label", `Slide ${i + 1}`);
+    btn.dataset.index = i;
+    btn.addEventListener("click", () => goTo(i));
+    if (i === 0) btn.setAttribute("aria-selected", "true");
+    indicatorsWrap.appendChild(btn);
+  });
+
+  function update() {
+    track.style.transform = `translateX(-${current * 100}%)`;
+    Array.from(indicatorsWrap.children).forEach((b, idx) =>
+      b.setAttribute("aria-selected", idx === current ? "true" : "false")
+    );
+  }
+
+  function goTo(idx) {
+    current = (idx + slides.length) % slides.length;
+    update();
+  }
+
+  function nextSlide() {
+    goTo(current + 1);
+  }
+
+  function prevSlide() {
+    goTo(current - 1);
+  }
+
+  next &&
+    next.addEventListener("click", () => {
+      nextSlide();
+      resetAutoplay();
+    });
+  prev &&
+    prev.addEventListener("click", () => {
+      prevSlide();
+      resetAutoplay();
+    });
+
+  carousel.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+      nextSlide();
+      resetAutoplay();
+    }
+    if (e.key === "ArrowLeft") {
+      prevSlide();
+      resetAutoplay();
+    }
+  });
+
+  function startAutoplay() {
+    if (autoplayId) clearInterval(autoplayId);
+    autoplayId = setInterval(nextSlide, AUTOPLAY_MS);
+  }
+
+  function stopAutoplay() {
+    if (autoplayId) {
+      clearInterval(autoplayId);
+      autoplayId = null;
+    }
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  carousel.addEventListener("mouseenter", stopAutoplay);
+  carousel.addEventListener("focusin", stopAutoplay);
+  carousel.addEventListener("mouseleave", startAutoplay);
+  carousel.addEventListener("focusout", startAutoplay);
+
+  carousel.setAttribute("tabindex", "0");
+  update();
+  startAutoplay();
+})();

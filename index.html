@@ -20,7 +20,7 @@
     <header class="site-header" id="home">
         <nav class="nav">
             <a href="#home" class="logo">VENKI MAMA KITCHEN</a>
-            <!-- <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button> -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
             <ul class="nav-links">
                 <li><a href="#menu" data-link>Menu</a></li>
                 <li><a href="#location" data-link>Location</a></li>
@@ -28,17 +28,27 @@
             </ul>
         </nav>
         <div class="hero">
-            <picture>
-                <img src="assets/logo.jpeg" alt="VENKI MAMA KITCHEN storefront and dishes" loading="lazy"
-                    decoding="async">
-            </picture>
+            <!-- Desktop hero image: keep a single <img> so we don't load a separate mobile asset -->
+            <img src="assets/logo.jpeg" alt="VENKI MAMA KITCHEN storefront and dishes" loading="lazy" decoding="async">
+            <!-- Mobile animated hero fallback: shown only on small screens -->
+            <div class="hero-mobile" aria-hidden="false">
+                <div class="hero-mobile-bg" aria-hidden="true"></div>
+                <div class="hero-mobile-content">
+                    <!-- <div class="brand" aria-label="VENKI MAMA KITCHEN">
+                        <span class="brand-line">VENKI MAMA KITCHEN</span>
+                        <span class="brand-line brand-strong">For catering</span>
+                        <span class="brand-line">9705898963</span>
+                        <span class="brand-line">8143991636</span>
+                    </div> -->
+                </div>
+            </div>
             <!-- <div class="hero-text">
                 <h1>VENKI MAMA KITCHEN</h1>
                 <p>Andhra Meals · Tiffins · Snacks · Biryanis</p>
                 <div class="cta-row">
                     <a class="btn" href="#menu">See Menu</a>
-                    <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Sriram+Nagar+Colony,+Near+Ramki+One+Marvel,+Gajularamaram,+Hyderabad+500055">Get
-            Directions</a>
+            <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Sriram+Nagar+Colony,+Near+Ramki+One+Marvel,+Opp.+CNDU+Fabrics,+Gajularamaram,+Hyderabad,+Telangana+500055,+India">Get
+        Directions</a>
                 </div>
             </div> -->
         </div>
@@ -96,7 +106,7 @@
             <div class="location-layout">
                 <div class="map-wrap">
                     <iframe title="Map to VENKI MAMA KITCHEN"
-                        src="https://www.google.com/maps?q=Sriram+Nagar+Colony,+Near+Ramki+One+Marvel,+Gajularamaram,+Hyderabad+500055&output=embed"
+                        src="https://www.google.com/maps?q=Sriram+Nagar+Colony,+Near+Ramki+One+Marvel,+Opp.+CNDU+Fabrics,+Gajularamaram,+Hyderabad,+Telangana+500055,+India&output=embed"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
@@ -105,8 +115,8 @@
                         <li><strong>Mon–Fri</strong>: 11:00 AM – 11:30 PM</li>
                         <li><strong>Sat-Sun</strong>: 7:00 AM – 11:30 PM</li>
                     </ul>
-                    <p><strong>Address:</strong> Sriram Nagar Colony, Near Ramki One Marvel, Gajularamaram, Hyderabad –
-                        500055
+                    <p><strong>Address:</strong> Sriram Nagar Colony, Near Ramki One Marvel, Opp. CNDU Fabrics,
+                        Gajularamaram, Hyderabad, Telangana 500055, India
                     </p>
                     <p><strong>Phone:</strong> <a href="tel:+918143991636">81439 91636</a>, <a
                             href="tel:+919705898963">97058
@@ -149,10 +159,13 @@
             <div class="contact-cta">
                 <a class="btn-outline" href="tel:+918143991636">Call 81439 91636</a>
                 <a class="btn-outline" href="tel:+919705898963">Call 97058 98963</a>
-                <a class="btn-outline" target="_blank" rel="noopener" href="https://wa.me/918143991636">WhatsApp</a>
+                <a class="btn-outline" href="mailto:sales@venkimamakitchen.com"
+                    aria-label="Email sales at Venki Mama Kitchen">Email: sales@venkimamakitchen.com</a>
+                <!-- <a class="btn-outline" target="_blank" rel="noopener" href="https://wa.me/918143991636">WhatsApp</a> -->
                 <a class="btn" target="_blank" rel="noopener"
-                    href="https://maps.google.com/?q=Sriram+Nagar+Colony+Near+Ramki+One+Marvel+Gajularamaram+Hyderabad+500055">Get
+                    href="https://maps.google.com/?q=Sriram+Nagar+Colony,+Near+Ramki+One+Marvel,+Opp.+CNDU+Fabrics,+Gajularamaram,+Hyderabad,+Telangana+500055,+India">Get
                     Directions</a>
+            </div>
         </section>
     </main>
 
